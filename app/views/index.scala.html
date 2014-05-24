@@ -1,0 +1,74 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)" ng-app="logs">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion des logs</title>
+
+
+    <meta name="description" content="Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more." />
+
+    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com" />
+    <meta name="copyright" content="ZURB, inc. Copyright (c) 2013" />
+
+    <link rel="stylesheet" href="/assets/vendor/css/foundation.css" />
+</head>
+<body>
+
+
+<!-- Header and Nav -->
+
+<div class="row">
+    <div class="large-12 columns">
+        <div class="panel callout radius">
+            <h1>Gestion des logs !!!</h1>
+        </div>
+    </div>
+</div>
+
+<!-- End Header and Nav -->
+
+
+<div class="row">
+
+    <!-- Main Feed -->
+    <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
+    <div class="large-12 columns" ng-controller="LogCtrl">
+
+        <button class="button" ng-click="start()">Démarrer</button>
+        <button class="button alert" ng-click="stop()">Arreter</button>
+
+
+        <div ng-repeat="log in logs.slice().reverse()" >
+        <!-- Feed Entry -->
+        <div class="row">
+            <div class="large-2 columns small-3">
+                <a class="th radius">
+                    <img ng-src="/assets/images/{{log.wood}}.jpeg" />
+                </a>
+            </div>
+            <div class="large-10 columns">
+                <span class="label">{{log.wood}}</span>
+                <span ng-show="log.level == 'INFO'" class="success round radius label">{{log.level}}</span>
+                <span ng-show="log.level == 'ERROR'" class="alert round radius label">{{log.level}}</span>
+                <span ng-show="log.level == 'DEBUG'" class="round radius label">{{log.level}}</span>
+                <span class="secondary radius label">{{log.logger}}</span>
+                <p><strong>Message : </strong>{{log.message}}</p>
+            </div>
+        </div>
+        <!-- End Feed Entry -->
+        <hr />
+        </div>
+    </div>
+
+</div>
+
+
+<script src="/assets/vendor/angular.min.js"></script>
+<script src="/assets/vendor/ui-bootstrap-tpls-0.10.0.min.js"></script>
+<script src="/assets/app/app.js"></script>
+
+
+</body>
+</html>
